@@ -38,9 +38,9 @@ export function getHandler(options?: StoriesPluginOptions) {
         return new Response("Not found", { status: 404 });
       }
 
-      const storyPath = "file://" + join(Deno.cwd(), path);
+      const importFilePath = new URL(path, projectBasePath);
       const story = await import(
-        storyPath
+        importFilePath.href
       );
 
       const { default: Story } = story;

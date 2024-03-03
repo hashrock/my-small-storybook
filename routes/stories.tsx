@@ -16,6 +16,22 @@ export function getHandler(options?: StoriesPluginOptions) {
       const projectBasePath = getProjectBase(options?.baseLocation);
       const stories = await listStories(projectBasePath);
 
+      if (ctx.url.searchParams.get("debug") !== null) {
+        return new Response(
+          JSON.stringify(
+            {
+              stories,
+              projectBasePath,
+            },
+            null,
+            2,
+          ),
+          {
+            headers: { "content-type": "application/json" },
+          },
+        );
+      }
+
       const path = ctx.url.searchParams.get("path");
       // redirect to the first story
       if (path === null && stories.length > 0) {

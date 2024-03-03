@@ -3,5 +3,10 @@ import tailwind from "$fresh/plugins/tailwind.ts";
 import storiesPlugin from "../stories-plugin.ts";
 
 export default defineConfig({
-  plugins: [storiesPlugin(), tailwind()],
+  plugins: [
+    storiesPlugin({
+      baseLocation: import.meta.url,
+    }),
+    tailwind(),
+  ],
 });

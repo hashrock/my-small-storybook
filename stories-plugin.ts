@@ -16,7 +16,6 @@ export default function storiesPlugin(
       paths: [
         "./islands/StoryFrame.tsx",
         "./islands/StoryList.tsx",
-        // "./islands/Copyable.tsx",
       ],
     },
     routes: [
